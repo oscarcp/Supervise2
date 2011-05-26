@@ -1,0 +1,12 @@
+*.pyc
+._*
+.DS*
+*.db
+*.db-journal
+*.ps
+*.dvi
+*.toc
+*.log
+*.aux
+_build*
+*~
