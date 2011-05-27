@@ -12,6 +12,8 @@
 
 from django.conf.urls.defaults import patterns, include, url
 from django.contrib import admin
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+import settings
 
 admin.autodiscover()
 
@@ -20,22 +22,22 @@ urlpatterns = patterns('',
     # Django administration interface
     url(r'^admin/', include(admin.site.urls)),
 
-    # Static content #### FOR DEVELOPMENT!! ####
-    (r'^static/(?P<path>.*)$', 'django.views.static.serve',
-        {'document_root': 'static'}),
-
     # Uploads content #### FOR DEVELOPMENT!! ####
-    (r'^uploads/(?P<path>.*)$', 'django.views.static.serve',
-        {'document_root': 'uploads'}),
+    url(r'^uploads/(?P<path>.*)$', 'django.views.static.serve',
+        {'document_root': settings.MEDIA_URL}),
 
-
+    # User accounts
+    url(r'^user/', include('supervise.apps.userprofile.urls'), name='user'),
+    
     # Supervise index
-    url(r'^$', 'supervise.views.home', name='home'),
+    #url(r'^$', 'supervise.views.home'),
     
     # i18n language switcher
     url(r'^i18n/', include('django.conf.urls.i18n')),
 
     # Project index    
-    url(r'^(?P<project_name>[\w\-]+)/', include('supervise.apps.projects.urls'),
-        name='projects'),
+    #url(r'^(?P<project_name>[\w\-]+)/', include('supervise.apps.projects.urls'),
+    #    name='projects'),
 )
+
+urlpatterns += staticfiles_urlpatterns()

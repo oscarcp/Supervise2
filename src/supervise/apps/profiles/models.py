@@ -16,6 +16,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 
+from supervise.apps.userprofile.models import BaseProfile
+
 GENDER = (
     
     ('M', _('Male')),
@@ -24,13 +26,12 @@ GENDER = (
 
 )
 
-class UserProfile(models.Model):
-    user = models.ForeignKey(User, unique=True)
+class UserProfile(BaseProfile):
     firstname = models.CharField(_('Name'), max_length=50, blank=True)
     lastname = models.CharField(_('Last name'), max_length=200, blank=True)
     gender = models.CharField(_('Gender'), max_length=1, choices=GENDER,
                               blank=True)
-    birthdate = models.DateField(_('Birth date'), blank=True)
+    birthdate = models.DateField(_('Birth date'), blank=True, null=True)
     email = models.EmailField(_('Email'), unique=True)
     website = models.URLField(_('Website'), verify_exists=True, max_length=100,
                               null=True, blank=True,
@@ -50,5 +51,3 @@ class UserProfile(models.Model):
             
     def __unicode__(self):
         return self.firstname + self.lastname
-
-User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])

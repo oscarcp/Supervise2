@@ -16,9 +16,6 @@ cwd = os.path.dirname(os.path.realpath(__file__))
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-AUTH_PROFILE_MODULE = "profiles.UserProfile"
-LOGIN_REDIRECT_URL = '/user'
-
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
@@ -48,9 +45,9 @@ SITE_ID = 1
 USE_I18N = True
 USE_L10N = True
 MEDIA_ROOT = cwd + '/uploads/'
-MEDIA_URL = 'uploads'
-STATIC_ROOT = '/static/'
-STATIC_URL = 'static'
+MEDIA_URL = '/uploads'
+STATIC_ROOT = cwd + '/static/'
+STATIC_URL = '/static'
 
 # Check this, this value is the default for new projects, we will replace it
 # for an old value from django 1.2
@@ -58,11 +55,11 @@ STATIC_URL = 'static'
 ADMIN_MEDIA_PREFIX = '/media/'
 
 # Additional locations of static files
-STATICFILES_DIRS = (
+#STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-)
+#)
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -88,6 +85,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.static",
     "django.contrib.messages.context_processors.messages",
     "django.core.context_processors.request",
+    "supervise.apps.userprofile.context_processors.css_classes",
 )
 
 MIDDLEWARE_CLASSES = (
@@ -102,7 +100,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'supervise.urls'
 
 TEMPLATE_DIRS = (
-    cwd + '/templates'
+    cwd + '/templates',
 )
 
 DJANGO_APPS = (
@@ -116,17 +114,40 @@ DJANGO_APPS = (
 )
 
 THIRDPARTY_APPS = (
-    # Put here any third party applications
+    'supervise.apps.userprofile',
 )
 
 SUPERVISE_APPS = (
-    'supervise.apps.issues',
-    'supervise.apps.projects',
-    'supervise.apps.news',
-    'supervise.apps.wiki',
+    'supervise.apps.profiles',
+    #'supervise.apps.issues',
+    #'supervise.apps.projects',
+    #'supervise.apps.news',
+    #'supervise.apps.wiki',
 )
 
-INSTALLED_APPS = DJANGO_APPS + SUPERVISE_APPS
+INSTALLED_APPS = DJANGO_APPS + THIRDPARTY_APPS + SUPERVISE_APPS
+
+# django-profile settings
+# E-Mail settings
+DEFAULT_FROM_EMAIL = ''
+EMAIL_HOST = ''
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+REQUIRE_EMAIL_CONFIRMATION = True
+
+# Google Maps. Change this API key. This one is registered to 127.0.0.1:8000
+GOOGLE_MAPS_API_KEY = 'ABQIAAAA06IJoYHDPFMx4u3hTtaghxTpH3CbXHjuCVmaTc5MkkU4wO1RRhST5bKY_U7dUG1ZGu1S-n-ukXGNjQ'
+
+# Avatar settings
+DEFAULT_AVATAR = os.path.join(STATIC_ROOT, 'userprofile/generic.jpg')
+AVATAR_WEBSEARCH = False
+AVATAR_QUOTA = 8
+
+# Profile settings
+AUTH_PROFILE_MODULE = "profiles.UserProfile"
+LOGIN_URL = '/user/login'
+LOGIN_REDIRECT_URL = '/user'
+USERPROFILE_CSS_CLASSES = 'blueprint'
 
 LOGGING = {
     'version': 1,
