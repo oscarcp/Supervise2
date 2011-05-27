@@ -16,6 +16,9 @@ cwd = os.path.dirname(os.path.realpath(__file__))
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+AUTH_PROFILE_MODULE = "profiles.UserProfile"
+LOGIN_REDIRECT_URL = '/user'
+
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
