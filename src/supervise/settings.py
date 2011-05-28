@@ -44,10 +44,10 @@ LANGUAGES = (
 SITE_ID = 1
 USE_I18N = True
 USE_L10N = True
-MEDIA_ROOT = cwd + '/uploads/'
-MEDIA_URL = '/uploads'
-STATIC_ROOT = cwd + '/static/'
-STATIC_URL = '/static'
+MEDIA_ROOT = os.path.join(cwd, 'uploads/')
+MEDIA_URL = '/uploads/'
+STATIC_ROOT = os.path.join(cwd , 'static/')
+STATIC_URL = '/static/'
 
 # Check this, this value is the default for new projects, we will replace it
 # for an old value from django 1.2
