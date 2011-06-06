@@ -56,10 +56,13 @@ except (ImportError, ImproperlyConfigured):
 if not Profile:
     raise SiteProfileNotAvailable
 
-if not os.path.isdir(os.path.join(settings.STATIC_ROOT, "userprofile")):
-    print os.path.join(settings.STATIC_ROOT, "userprofile")
-    print os.path.isdir(os.path.join(settings.STATIC_ROOT, "userprofile"))
-    raise UserProfileMediaNotFound
+# NOTE: This piece of code has been commented because it doesn't work
+# fine in django 1.3. It's easy to reimplement though, but it's not
+# a priority.
+#if not os.path.isdir(os.path.join(settings.STATIC_ROOT, "userprofile")):
+#    print os.path.join(settings.STATIC_ROOT, "userprofile")
+#    print os.path.isdir(os.path.join(settings.STATIC_ROOT, "userprofile"))
+#    raise UserProfileMediaNotFound
 
 GOOGLE_MAPS_API_KEY = hasattr(settings, "GOOGLE_MAPS_API_KEY") and \
                       settings.GOOGLE_MAPS_API_KEY or None
@@ -272,7 +275,7 @@ def avatarchoose(request):
         base, filename = os.path.split(DEFAULT_AVATAR)
         filename, extension = os.path.splitext(filename)
         generic = "%s/%s.%d%s" % (base, filename, DEFAULT_AVATAR_SIZE, extension)
-        generic = generic.replace(settings.MEDIA_ROOT, settings.MEDIA_URL)
+        generic = generic.replace(settings.STATIC_ROOT, settings.STATIC_URL)
     else:
         generic = ""
 

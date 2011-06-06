@@ -44,9 +44,9 @@ LANGUAGES = (
 SITE_ID = 1
 USE_I18N = True
 USE_L10N = True
-MEDIA_ROOT = os.path.join(cwd, 'uploads/')
-MEDIA_URL = '/uploads/'
-STATIC_ROOT = os.path.join(cwd , 'static/')
+MEDIA_ROOT = cwd + '/uploads'
+MEDIA_URL = '/uploads'
+STATIC_ROOT = cwd + '/static'
 STATIC_URL = '/static/'
 
 # Check this, this value is the default for new projects, we will replace it
@@ -55,11 +55,9 @@ STATIC_URL = '/static/'
 ADMIN_MEDIA_PREFIX = '/media/'
 
 # Additional locations of static files
-#STATICFILES_DIRS = (
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-#)
+STATICFILES_DIRS = (
+    cwd + '/static_files/',
+)
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',

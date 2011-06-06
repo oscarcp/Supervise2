@@ -5,28 +5,28 @@ from django.conf import settings
 
 urlpatterns = patterns('',
     # Private profile
-    url(r'^profile/$', overview, name='profile_overview'),
+    url(r'^$', overview, name='profile_overview'),
 
-    url(r'^profile/edit/location/$', location, name='profile_edit_location'),
+    url(r'^edit/location/$', location, name='profile_edit_location'),
 
-    url(r'^profile/edit/personal/$', personal, name='profile_edit_personal'),
+    url(r'^edit/personal/$', personal, name='profile_edit_personal'),
 
-    url(r'^profile/delete/$', delete, name='profile_delete'),
+    url(r'^delete/$', delete, name='profile_delete'),
 
-    url(r'^profile/getcountry_info/(?P<lat>[0-9\.\-]+)/(?P<lng>[0-9\.\-]+)/$',
+    url(r'^getcountry_info/(?P<lat>[0-9\.\-]+)/(?P<lng>[0-9\.\-]+)/$',
         fetch_geodata,
         name='profile_geocountry_info'),
 
     # Avatars
-    url(r'^profile/edit/avatar/delete/$', avatardelete,
+    url(r'^edit/avatar/delete/$', avatardelete,
         name='profile_avatar_delete'),
 
-    url(r'^profile/edit/avatar/$', avatarchoose, name='profile_edit_avatar'),
+    url(r'^edit/avatar/$', avatarchoose, name='profile_edit_avatar'),
 
-    url(r'^profile/edit/avatar/crop/$', avatarcrop,
+    url(r'^edit/avatar/crop/$', avatarcrop,
         name='profile_avatar_crop'),
 
-    url(r'^profile/edit/avatar/crop/done/$', direct_to_template,
+    url(r'^edit/avatar/crop/done/$', direct_to_template,
         { 'extra_context': {'section': 'avatar'},
         'template': 'userprofile/avatar/done.html'},
         name='profile_avatar_crop_done'),

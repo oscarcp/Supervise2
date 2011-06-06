@@ -76,7 +76,7 @@ class ResizedThumbnailNode(Node):
             base, filename = os.path.split(avatar_path)
             name, extension = os.path.splitext(filename)
             filename = os.path.join(base, "%s.%s%s" % (name, size, extension))
-            base_url = filename.replace(settings.MEDIA_ROOT, settings.MEDIA_URL)
+            base_url = filename.replace(settings.STATIC_ROOT, settings.STATIC_URL)
 
         url_tuple = urlparse.urlparse(base_url)
         url = urlparse.urljoin(urllib.unquote(urlparse.urlunparse(url_tuple)), "%s.%s%s" % (name, size, extension))
