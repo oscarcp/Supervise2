@@ -1,0 +1,50 @@
+{% load i18n %}
+<ul class="topnav">
+
+    <li><a href="/" alt="{% trans 'Go to the main page' %}">{% trans "Home" %}</a></li>
+    
+    <li class="sep"></li>
+    
+    <li><a href="/projects" alt="{% trans 'List projects' %}">{% trans "Projects" %}</a></li>
+    
+    <li class="sep"></li>
+    
+    {% if user.is_authenticated %}
+    <li>
+        <a href="/user/" class="username" alt="{% trans 'User profile page' %}">
+            {% if user.get_profile.firstname %}
+                {{ user.get_profile.firstname }} {{ user.get_profile.lastname }}
+            {% endif %}  
+        </a>
+        <ul class="subnav">
+            {% if user.is_staff %}
+	            <li><a href="/admin" alt="{% trans 'Administration interface' %}">{% trans "Administration" %}</a></li>
+	            <li><a href="/rosetta" alt="{% trans 'Translation website' %}">{% trans "Translation" %}</a></li>
+	        {% endif %}
+            <li><a href="/user/edit/profile/" alt="{% trans 'Edit your profile' %}">{% trans "Edit profile" %}</a></li>
+            <li><a href="/user/logout" alt="{% trans 'Log out of the website' %}">{% trans "Logout" %}</a></li>
+        </ul>
+    </li>
+    
+    <li class="sep"></li>
+    {% endif %}
+    
+    {% if not user.is_authenticated %}
+    <li><a href="/user/login" alt="{% trans 'User login page' %}">{% trans "Login" %}</a></li>
+    
+    <li class="sep"></li>
+    {% endif %}
+    
+    <li>
+        <form action="/i18n/setlang/" method="post">{% csrf_token %}
+            <input name="next" type="hidden" value="/" />
+            <select name="language" onchange="this.form.submit()">
+                <option>{% trans "Language" %}</option>
+                {% for lang in LANGUAGES %}
+                    <option value="{{ lang.0 }}">{{ lang.1 }}</option>
+                {% endfor %}
+            </select>
+        </form>
+    </li>
+
+</ul>

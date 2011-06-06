@@ -9,6 +9,8 @@ __maintainer__ = "Oscar Carballal Prego"
 __email__ = "oscarcp@clionesoftware.com"
 __status__ = "Alpha"
 
+APPLICATION_NAME = "Supervise {0} {1}".format(__version__, __status__)
+
 # Get the current directory
 import os
 cwd = os.path.dirname(os.path.realpath(__file__))

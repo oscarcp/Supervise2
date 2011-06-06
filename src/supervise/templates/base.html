@@ -1,3 +1,85 @@
+{% load i18n %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+	<head>
+		<title>{% block title %}{% endblock %}</title>
+		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/reset.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/text.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/grid.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/layout.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/nav.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/screen.css" media="screen" />
+		<link rel="author" href="{{ STATIC_URL }}humans.txt" />
+		<link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico" type="image/ico"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta name="Description" content="Site description"/>
+		<meta name="Robots" content="{% block robots %}index,follow{% endblock %}"/>
+		<script src="{{ STATIC_URL }}js/jquery-1.6.1.js" type="text/javascript"></script>
+		<script src="{{ STATIC_URL }}js/jqueryui-1.8.13.js" type="text/javascript"></script>
+		<!--<script src="{{ STATIC_URL }}/js/dropdown.js" type="text/javascript"></script>-->
+	</head>
+	<body>
+	
+	    <div id="topbar">
+	    
+	        <div class="appname">
+	            {{ appname }}
+	        </div>
+	        
+	        <div id="menu">
+	            {% include "menu.html" %}
+	        </div>
+	        
+	    </div>
+	    
+	    <div id="header">
+	        
+	        <div class="logo">
+	            {% block logo %}
+	                <a href="/"><img src="{{ STATIC_URL }}img/logo.png" alt="Supervise logotype"></a>
+	            {% endblock %}
+	        </div>
+	        
+	        <div id="banner">
+	            {% block banner %}
+	                <img src="{{ STATIC_URL }}img/banner.png" alt="Supervise banner">
+	            {% endblock %}
+	        </div>
+	        
+	    </div>
+	    
+	    <div id="content">
+	    
+	        {% block content %}	        
+	        {% endblock%}
+	        
+	    </div>
+	    
+	    <div id="footer">
+	    
+	        <p>Powered by <a href="http://supervise.clionesoftware.com" alt="Supervise 2 homepage">Supervise 2</a> created by <a href="http://clionesoftware.com" alt="Clione Software homepage">Oscar Carballal Prego</a></p>
+	        <p><a href="{{ STATIC_URL }}/humans.txt"><img src="{{ STATIC_URL }}img/humanstxt.png"/></a></p>
+	    
+	    </div>
+	
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {% load i18n %}<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
