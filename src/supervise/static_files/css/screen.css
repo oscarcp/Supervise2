@@ -1,13 +1,145 @@
+/*
+    Copyright (c) 2010 Cidadanía Coop.
+    Written by: Oscar Carballal Prego <info@oscarcp.com>
 
-/*****************
-  DROP DOWN MENU
-******************/ 
+    This file is part of the e-cidadania.
 
+    Distributed under terms of the GPLv3 license.
+*/
+
+/* CSS RESET */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+body {
+	line-height: 1;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+:focus {
+	outline: 0;
+}
+
+ins {
+	text-decoration: none;
+}
+
+del {
+	text-decoration: line-through;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* END CSS RESET */
+
+
+/* HTML TAGS DEFINITION */
+body {
+	background: #FAFAFA;
+	padding: 0;
+	margin: 0;
+	font-family: Verdana, "Lucida Sans", Arial;
+	font-size: 12px;
+	color: #000;
+	cursor: default;
+}
+
+a {
+	text-decoration: none;
+}
+
+p {
+	text-indent: 10px;
+}
+
+img {
+	border: none;
+}
+/* END HTML TAGS DEFINITION */
+
+/* HTML SKELETON */
+#topbar {
+    width: 100%;
+    height: 26px;
+    background: #000000;
+}
+
+#menu {
+    float: right;
+    height: 30px;
+}
+
+#footer {
+    width: 100%;
+    margin-top: 25px;
+    padding: 20px;
+    background: #000;
+}
+/* END HTML SKELETON */
+
+/* CLASSES */
+.sidetitle {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.sidelist li {
+    padding: 5px;
+}
+/* END CLASSES */
+
+/* LOGIN */
+.loginblock {
+    border: 1px solid #DDDDDD;
+    background: #EEEEEE;
+    margin: auto;
+    padding: 15px;
+    width: 300px;
+}
+
+.loginblock legend {
+    font-size: 1.5em;
+    font-weight: bold;
+    padding-bottom: 15px;
+}
+/* END LOGIN */
+
+/* DROP DOWN MENU */ 
 ul.topnav {
 	list-style: none;
 	padding: 0 20px;
 	margin: 0;
-	float: left;
+	float: right;
 	width: 920px;
 	background: #222;
 	font-size: 1.2em;
