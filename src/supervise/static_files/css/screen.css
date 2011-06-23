@@ -85,6 +85,22 @@ p {
 img {
 	border: none;
 }
+
+input[type="text"], input[type="password"] {
+    font-size: 2em;
+    border: 1px solid #999;
+    background: url('../assets/inputbg.png') repeat-x;
+    margin: 10px 0px 10px 0px;
+    padding: 2px;
+    width: 90%;
+    height: 25px;
+
+    /* Fancy round borders for Webkit, Gecko and standard
+       implementations */
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
 /* END HTML TAGS DEFINITION */
 
 /* HTML SKELETON */
@@ -97,6 +113,16 @@ img {
 #menu {
     float: right;
     height: 30px;
+}
+
+.logo {
+    float: left;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.banner {
+    float: left;
 }
 
 #footer {
@@ -121,10 +147,13 @@ img {
 /* LOGIN */
 .loginblock {
     border: 1px solid #DDDDDD;
-    background: #EEEEEE;
+    background: #F8F8F8;
     margin: auto;
     padding: 15px;
     width: 300px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
 }
 
 .loginblock legend {
