@@ -1,22 +1,24 @@
-Supervise 2.0
-=============
+Supervise 2
+-----------
 
-Supervise 2 is a remake of "Supervise" a project management tool made on top of the django framework. Due to the new django releases and the early stage of the old project, it has been rewritten.
+This is a rebuilt version of the Supervise project management tool. This new
+version comes with great features (to be written yet)
 
-Install
-=======
+* Distributed automanaged teams
+* Support for subprojects
+* Colaborative ideas and status panel (pretty much like scrum)
+* Dynamic access depending on team
+* Support POST hooks for RTD and local sphinx.
 
-Currently Supervise 2 is not stable. The instructions here are for a testing installation.
+License: BSD 2-Clause
 
-**Get the source code from a repository** (Gitorious and GitHub are available)
-    git clone git://gitorious.org/supervise2/mainline.git
-    git clone git://github.com/oscarcp/Supervise2.git
+Requirements
+------------
 
-**Collect all the static files**
-    python manage.py collectstatic
-    
-**Create a new database**
-    python manage.py syncdb
+* django 1.4
 
-**Start the development server**
-    python manage.py runserver
+I want to use it!
+-----------------
+
+Yeah, sorry, this project is still on incubation stage, but if you want to
+help to develop it, you're welcome! :)
