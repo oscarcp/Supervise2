@@ -1,4 +1,20 @@
-# Django settings for supervise project.
+# -*- coding: utf-8 -*-
+#
+# Copyright (c) 2012 Clione Software
+# Authors: Oscar Carballal Prego <oscar@clionesoftware.com>
+# License: BSD Simplified (2-Clause BSD). See LICENSE for details.
+#
+# This file is part of Supervise project.
+
+import os
+
+# Activate the new url syntax in django 1.3 which will be
+# compatible till 1.5
+import django.template
+django.template.add_to_builtins('django.templatetags.future')
+
+# Get the current working directory
+cwd = os.path.dirname(os.path.realpath(__file__)).strip('settings')
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -11,40 +27,27 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '',                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db/development.db',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
     }
 }
 
-# Local time zone for this installation. Choices can be found here:
-# http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
-# although not all choices may be available on all operating systems.
-# On Unix systems, a value of None will cause Django to use the same
-# timezone as the operating system.
-# If running in a Windows environment this must be set to the same as your
-# system time zone.
-TIME_ZONE = 'America/Chicago'
-
-# Language code for this installation. All choices can be found here:
-# http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
-
+TIME_ZONE = 'UTC'
+LANGUAGE_CODE = 'en-gb'
 SITE_ID = 1
-
-# If you set this to False, Django will make some optimizations so as not
-# to load the internationalization machinery.
 USE_I18N = True
-
-# If you set this to False, Django will not format dates, numbers and
-# calendars according to the current locale.
 USE_L10N = True
-
-# If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
+
+LANGUAGES = (
+    ('en_GB', 'English'),
+    ('es_ES', 'Español'),
+    ('gl_ES', 'Galego')
+)
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
@@ -77,7 +80,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -90,14 +93,21 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.Loader',
 )
 
+EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
+
+AUTHENTICATION_BACKENDS = (
+    'userena.backends.UserenaAuthenticationBackend',
+    'guardian.backends.ObjectPermissionBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    # Uncomment the next line for simple clickjacking protection:
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
 ROOT_URLCONF = 'supervise.urls'
@@ -111,7 +121,11 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
 )
 
-INSTALLED_APPS = (
+THIRDPARTY_APPS = (
+    'apps.thirdparty.userena',
+)
+
+SUPERVISE_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -123,6 +137,8 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
+
+INSTALLED_APPS = SUPERVISE_APPS + THIRDPARTY_APPS
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
