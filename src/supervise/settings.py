@@ -49,6 +49,11 @@ LANGUAGES = (
     ('gl_ES', 'Galego')
 )
 
+LOGIN_REDIRECT_URL = '/u/%(username)s/'
+LOGIN_URL = '/u/signin/'
+LOGOUT_URL = '/u/signout/'
+ANONYMOUS_USER_ID = -1
+AUTH_PROFILE_MODULE = "core.accounts.UserProfile"
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
 MEDIA_ROOT = ''
@@ -108,6 +113,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'userena.middleware.UserenaLocaleMiddleware',
 )
 
 ROOT_URLCONF = 'supervise.urls'
@@ -132,10 +138,7 @@ SUPERVISE_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
+    'django.contrib.admin',
 )
 
 INSTALLED_APPS = SUPERVISE_APPS + THIRDPARTY_APPS
